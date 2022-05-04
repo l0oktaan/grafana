@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 5s
+  external_labels:
+    monitor: 'node'
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['127.0.0.1:9090'] ## IP Address of the localhost. Match the port to your container port
+  # Example job for node_exporter
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['node_exporter:9100']
+
+  # Example job for cadvisor
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
